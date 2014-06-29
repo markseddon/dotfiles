@@ -1,0 +1,3 @@
+install grc
+install coreutils
+install spark
