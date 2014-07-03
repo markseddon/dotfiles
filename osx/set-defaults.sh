@@ -5,8 +5,6 @@
 #
 # Run ./set-defaults.sh and you'll be good to go.
 
-sudo -v
-
 ###############################################################################
 # General UI/UX #
 ###############################################################################
@@ -16,6 +14,12 @@ defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 
 # Check for software updates daily, not just once per week
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
+
+# Show hidden files in Finder
+defaults write com.apple.finder AppleShowAllFiles TRUE
+
+# disable notification
+launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
 
 ###############################################################################
 # Activity Monitor #

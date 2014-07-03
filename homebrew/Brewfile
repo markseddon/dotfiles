@@ -1,3 +1,37 @@
+# Make sure we’re using the latest Homebrew
+update
+
+# Upgrade any already-installed formulae
+upgrade
+
+# homebrew basics
+tap homebrew/dupes
+install homebrew/dupes/grep
+
+# useful utilities
 install grc
 install coreutils
 install spark
+
+# Install other useful binaries
+install ack
+install git
+install node
+install tree
+install vim --override-system-vi
+install dnsmasq
+
+# install PHP 5.5 and composer
+tap homebrew/versions
+tap homebrew/homebrew-php
+install php55
+install php55-intl
+install php55-crypto
+install homebrew/php/composer
+
+# brew cask
+tap caskroom/cask
+install brew-cask
+cask alfred link
+cask install google-chrome
+cask install evernote

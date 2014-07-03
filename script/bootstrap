@@ -2,6 +2,8 @@
 #
 # bootstrap installs things.
 
+sudo -v
+
 cd "$(dirname "$0")/.."
 DOTFILES_ROOT=$(pwd)
 
