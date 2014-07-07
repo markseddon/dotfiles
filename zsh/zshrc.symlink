@@ -56,6 +56,10 @@ source $ZSH/oh-my-zsh.sh
 source /usr/local/bin/aws_zsh_completer.sh
 export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
 export PATH="$(brew --prefix homebrew/php/php55)/bin:$PATH"
+export PATH=$PATH:/usr/local/go/bin
+
+# go path
+export GOPATH=$HOME/Projects/go/
 # export MANPATH="/usr/local/man:$MANPATH"
 
 eval "$(rbenv init -)"
@@ -76,3 +80,4 @@ eval "$(rbenv init -)"
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
+eval "$(rbenv init -)"

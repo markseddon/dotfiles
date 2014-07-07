@@ -6,6 +6,7 @@ upgrade
 
 # homebrew basics
 tap homebrew/dupes
+tap homebrew/versions
 install homebrew/dupes/grep
 
 # useful utilities
@@ -22,12 +23,15 @@ install vim --override-system-vi
 install dnsmasq
 
 # install PHP 5.5 and composer
-tap homebrew/versions
 tap homebrew/homebrew-php
 install php55
 install php55-intl
 install php55-crypto
 install homebrew/php/composer
+
+# install hhvm 
+tap mcuadros/homebrew-hhvm
+install hhvm
 
 # brew cask
 tap caskroom/cask
