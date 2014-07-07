@@ -29,8 +29,11 @@ install php55-intl
 install php55-crypto
 install homebrew/php/composer
 
+# install go
+install go
+
 # brew cask
 tap caskroom/cask
 install brew-cask
-cask install google-chrome alfred iterm2 evernote slack harvest onepassword
+cask install google-chrome alfred iterm2 evernote slack harvest onepassword vagrant dropbox spectacle 
 cask alfred link
