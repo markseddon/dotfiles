@@ -12,6 +12,7 @@ install homebrew/dupes/grep
 install grc
 install coreutils
 install spark
+install wget
 
 # Install other useful binaries
 install ack
