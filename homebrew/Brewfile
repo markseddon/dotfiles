@@ -32,6 +32,5 @@ install homebrew/php/composer
 # brew cask
 tap caskroom/cask
 install brew-cask
+cask install google-chrome alfred iterm2 evernote slack harvest onepassword
 cask alfred link
-cask install google-chrome
-cask install evernote
