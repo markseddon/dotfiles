@@ -57,6 +57,7 @@ source /usr/local/bin/aws_zsh_completer.sh
 export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
 export PATH="$(brew --prefix homebrew/php/php55)/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/opt/packer/
 
 # go path
 export GOPATH=$HOME/Projects/go/

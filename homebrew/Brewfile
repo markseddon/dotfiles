@@ -40,5 +40,5 @@ install go
 # brew cask
 tap caskroom/cask
 install brew-cask
-cask install google-chrome alfred iterm2 evernote slack harvest onepassword vagrant dropbox spectacle 
+cask install google-chrome alfred iterm2 evernote slack harvest onepassword vagrant dropbox spectacle postgresql 
 cask alfred link
