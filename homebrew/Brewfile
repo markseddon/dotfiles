@@ -1,44 +1,33 @@
-# Make sure we’re using the latest Homebrew
-update
-
-# Upgrade any already-installed formulae
-upgrade
-
 # homebrew basics
-tap homebrew/dupes
-tap homebrew/versions
-install homebrew/dupes/grep
+tap "homebrew/dupes"
+tap "homebrew/versions"
+brew "homebrew/dupes/grep"
 
 # useful utilities
-install grc
-install coreutils
-install spark
-install wget
+brew "grc"
+brew "coreutils"
+brew "spark"
+brew "wget"
 
 # Install other useful binaries
-install ack
-install git
-install node
-install tree
-install vim --override-system-vi
-install dnsmasq
+brew "ack"
+brew "git"
+brew "node"
+brew "tree"
+brew "vim --override-system-vi"
+brew "dnsmasq"
 
-# install PHP 5.5 and composer
-tap homebrew/homebrew-php
-install php55
-install php55-intl
-install php55-crypto
-install homebrew/php/composer
+# brew PHP 5.5 and composer
+tap "homebrew/homebrew-php"
+brew "php55"
+brew "php55-intl"
+brew "php55-crypto"
+brew "homebrew/php/composer"
 
-# install hhvm 
-tap mcuadros/homebrew-hhvm
-install hhvm
+# brew hhvm 
+#itap mcuadros/homebrew-hhvm
+#brew hhvm
 
-# install go
-install go
+# brew go
+brew "go" --cross-compile-common
 
-# brew cask
-tap caskroom/cask
-install brew-cask
-cask install google-chrome alfred iterm2 evernote slack harvest onepassword vagrant dropbox spectacle postgresql 
-cask alfred link
