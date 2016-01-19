@@ -14,7 +14,7 @@ brew "ack"
 brew "git"
 brew "node"
 brew "tree"
-brew "vim --override-system-vi"
+brew "vim", args: ['override-system-vi']
 brew "dnsmasq"
 
 # brew PHP 5.5 and composer
@@ -29,5 +29,5 @@ brew "homebrew/php/composer"
 #brew hhvm
 
 # brew go
-brew "go" --cross-compile-common
+brew "go", args: ['cross-compile-common'] 
 
