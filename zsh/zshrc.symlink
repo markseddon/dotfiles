@@ -8,72 +8,35 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="mh"
 
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias a="ack"
+alias be="bundle exec"
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to disable command auto-correction.
-# DISABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 source /usr/local/bin/aws_zsh_completer.sh
+function aro { $(aws_sts.sh $1 -e); }
+function arw { $(aws_sts.sh $1 -e -w); }
+
+# Various paths
 export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
+export PATH="/Users/markseddon/Projects/bulletproof/assemblage/aws:$PATH"
 export PATH="$(brew --prefix homebrew/php/php55)/bin:$PATH"
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export PATH=$PATH:/opt/packer/
+export PATH=$PATH:/opt/terraform/
 
 # go path
-export GOPATH=$HOME/Projects/go/
-# export MANPATH="/usr/local/man:$MANPATH"
+export GOPATH=$HOME/.gocode/
+export PATH=$PATH:/$GOPATH/bin
 
 eval "$(rbenv init -)"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -82,3 +45,43 @@ eval "$(rbenv init -)"
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 eval "$(rbenv init -)"
+
+test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
+
+# Functions for grabbing STS permissions for AWS Client accces
+aw() { $(awssts -w $1); }
+ar() { $(awssts $1); }
+
+## Credo local loopback for managing keys
+credo () {
+
+    addr="169.254.169.254";
+    loopback_interface="lo0";
+    if ! ifconfig ${loopback_interface} | grep ${addr} > /dev/null; then;
+        echo "creating $addr alias";
+        sudo ifconfig lo0 alias $addr;
+        plist=/Library/LaunchDaemons/delfick.credo.fake_metadata.plist;
+        for action in unload load; do;
+            sudo launchctl $action $plist;
+        done;
+    fi;
+
+    if /usr/local/bin/credo sourceable $@; then
+        output=$(/usr/local/bin/credo $@);
+        if (($? == 0)); then
+            echo "$output" > /tmp/lolz;
+            source /tmp/lolz;
+        else
+            echo "$output";
+        fi;
+    else
+        /usr/local/bin/credo $@;
+    fi
+}
+switch () {
+    if [[ -z $1 ]]; then
+        credo switch
+    else
+        credo --account $1 switch
+    fi
+}
