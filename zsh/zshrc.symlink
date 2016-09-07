@@ -11,6 +11,12 @@ ZSH_THEME="mh"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias a="ack"
 alias be="bundle exec"
+alias rp="pwgen 20 1"
+alias ippub="dig +short myip.opendns.com @resolver1.opendns.com"
+alias reload="source ~/.zshrc"
+alias mv="mv -v"
+alias rm="rm -vi"
+alias cp="cp -v"
 
 plugins=(git)
 
@@ -22,12 +28,12 @@ function aro { $(aws_sts.sh $1 -e); }
 function arw { $(aws_sts.sh $1 -e -w); }
 
 # Various paths
-export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH="/Users/markseddon/Projects/bulletproof/assemblage/aws:$PATH"
 export PATH="$(brew --prefix homebrew/php/php55)/bin:$PATH"
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
-export PATH=$PATH:/opt/packer/
-export PATH=$PATH:/opt/terraform/
+export PATH=$PATH:/opt/packer
+export PATH=$PATH:/opt/terraform
 
 # go path
 export GOPATH=$HOME/.gocode/
