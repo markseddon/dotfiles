@@ -16,7 +16,7 @@ defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 
 # Show hidden files in Finder
-defaults write com.apple.finder AppleShowAllFiles TRUE
+defaults write com.apple.finder AppleShowAllFiles FALSE 
 
 # disable notification
 launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
