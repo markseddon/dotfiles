@@ -18,17 +18,6 @@ brew "tree"
 brew "vim", args: ['override-system-vi']
 brew "dnsmasq"
 
-# brew PHP 5.5 and composer
-tap "homebrew/homebrew-php"
-brew "php55"
-brew "php55-intl"
-brew "php55-crypto"
-brew "homebrew/php/composer"
-
-# brew hhvm 
-#itap mcuadros/homebrew-hhvm
-#brew hhvm
-
 # brew go
 brew "go", args: ['cross-compile-common'] 
 
